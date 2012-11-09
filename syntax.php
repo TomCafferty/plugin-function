@@ -22,17 +22,6 @@ require_once(DOKU_PLUGIN.'syntax.php');
 
 class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
  
-    function getInfo(){
-        return array(
-            'author' => 'Tom Cafferty',
-            'email'  => 'tcafferty@glocalfocal.com',
-            'date'   => '2012-10-05',
-            'name'   => 'Function',
-            'desc'   => 'Allows you to run a PHP function on Server',
-            'url'    => 'http://www.dokuwiki.org/plugin:function',
-        );
-    }
- 
     function getType(){ return 'substition'; }
     function getPType(){ return 'normal'; }
     function getAllowedTypes() { 

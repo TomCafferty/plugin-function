@@ -1,0 +1,7 @@
+base function
+author Tom Cafferty
+email tcafferty@glocalfocal.com
+date 2012-11-08
+name function plugin
+desc Execute a php function from a configured set of functions
+url http://dokuwiki.org/plugin:function
