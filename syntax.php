@@ -51,11 +51,15 @@ class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
             case DOKU_LEXER_SPECIAL :
               preg_match("#^<function=(.+)>$#", $data, $matches);
               $func = $matches[1];
+			  $a = explode('?', $func);
+			  $func = $a[0];
+			  if (!empty($a[1])) { parse_str($a[1], $params); }
+			  else { $params = ''; }
               if(preg_match("#^[a-z0-9\-_ \./]+$#i", $func)) {
                     $renderer->info['cache'] = FALSE;
                     $filename = DOKU_PLUGIN . 'function/functions/' . $this->getConf($func);
                     include ($filename);
-                    $renderer->doc .= run();
+                    $renderer->doc .= run($params);
               }
               else
                     $renderer->doc .= $renderer->_xmlEntities($data);
