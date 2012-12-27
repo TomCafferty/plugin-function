@@ -58,7 +58,7 @@ class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
               if(preg_match("#^[a-z0-9\-_ \./]+$#i", $func)) {
                     $renderer->info['cache'] = FALSE;
                     $filename = DOKU_PLUGIN . 'function/functions/' . $this->getConf($func);
-                    include ($filename);
+                    include_once ($filename);
                     $renderer->doc .= run($params);
               }
               else
