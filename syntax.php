@@ -2,10 +2,10 @@
 /**
  * PHP Includes via Syntax
  *
- * Put your php files in /functions folder and add the path and function
- * identifier to the /conf/default.php filr
+ * Put your php files in /functions folder
+ * Use the filename without .php extension inside the function tag:
  *
- * <function=functionId>
+ * <function=filename>
  * 
  * The syntax includes the PHP file per include an puts the result into
  * the wiki page.
@@ -55,9 +55,15 @@ class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
               $func = $a[0];
               if (!empty($a[1])) { parse_str($a[1], $params); }
               else { $params = ''; }
-              if(preg_match("#^[a-z0-9\-_ \./]+$#i", $func)) {
+              // this checks also that no relative path can be used
+              if(preg_match("#^[a-z0-9\-_]+$#i", $func)) {
+                    // critical part, this include and run shall be guarded
+                    // against misuse and the check on the line before is
+                    // extremely important (no dots allowed in the name, only
+                    // alphanumeric, - and _ The files must be located in the
+                    // functions directory in a 'flat' way
                     $renderer->info['cache'] = FALSE;
-                    $filename = DOKU_PLUGIN . 'function/functions/' . $this->getConf($func);
+                    $filename = DOKU_PLUGIN . 'function/functions/' . $func . '.php';
                     include_once ($filename);
                     $renderer->doc .= run($params);
               }

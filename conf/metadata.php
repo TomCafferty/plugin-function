@@ -5,5 +5,5 @@
  * @author Tom Cafferty <tcafferty@glocalfocal.com>
  */
 
-$meta['file1'] = array('string');
+//$meta['file1'] = array('string');
 
