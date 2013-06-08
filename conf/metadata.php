@@ -6,4 +6,6 @@
  */
 
 $meta['file1'] = array('string');
+$meta['file2'] = array('string');
+$meta['file3'] = array('string');
 

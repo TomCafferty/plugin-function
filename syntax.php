@@ -54,12 +54,12 @@ class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
               $a = explode('?', $func);
               $func = $a[0];
               if (!empty($a[1])) { parse_str($a[1], $params); }
-              else { $params = ''; }
+              else { $params[0] = ''; }
               if(preg_match("#^[a-z0-9\-_ \./]+$#i", $func)) {
                     $renderer->info['cache'] = FALSE;
                     $filename = DOKU_PLUGIN . 'function/functions/' . $this->getConf($func);
-                    include_once ($filename);
-                    $renderer->doc .= run($params);
+                    include ($filename);
+                    $renderer->doc .= $thisfunction($params);
               }
               else
                     $renderer->doc .= $renderer->_xmlEntities($data);

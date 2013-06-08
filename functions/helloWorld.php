@@ -1,5 +1,5 @@
 <?php
-function run ($params) {
+$thisfunction = function($params) {
     // Create output data
     $dataout='<p class="cellGreen">Hello World!</p>';
 
@@ -9,4 +9,4 @@ function run ($params) {
         if ($val != $num) $dataout.=$val.'<br />';
     }
 	return $dataout;
-}
+};
