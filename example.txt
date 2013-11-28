@@ -1,1 +1,3 @@
-<function=file1?0=That's&1=All&2=Folks!&num=3>
+<function=file2?0=That's&1=All&2=Folks!&num=3>
+<function=file3>
+<function=file2?0=That's&1=All&2=Folks!&num=3>
