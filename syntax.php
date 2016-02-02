@@ -33,7 +33,7 @@ class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
         $this->Lexer->addSpecialPattern('<function=.*?>',$mode,'plugin_function');
     }
     
-    function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
         switch ($state) {
           case DOKU_LEXER_SPECIAL :
             return array($state, $match);          
@@ -42,7 +42,7 @@ class syntax_plugin_function extends DokuWiki_Syntax_Plugin {
         }
     }
  
-    function render($mode, &$renderer, $indata) {
+    function render($mode, Doku_Renderer $renderer, $indata) {
         global $conf;
         if($mode == 'xhtml'){
           list($state, $data) = $indata;
